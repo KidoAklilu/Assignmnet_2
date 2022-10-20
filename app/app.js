@@ -22,6 +22,8 @@ import { MongoURI, Secret } from '../config/config.js'
 
 import indexRouter from './routes/index.route.server.js'
 
+import contactRouter from './routes/contacts.route.server.js'
+
 //instance app-server
 const app = express(MongoURI)
 
@@ -53,5 +55,6 @@ app.use(
 //add routes
 
 app.use('/', indexRouter)
+app.use('/', contactRouter)
 
 export default app
