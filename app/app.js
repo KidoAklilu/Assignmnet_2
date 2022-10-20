@@ -11,15 +11,27 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+//Import Mongoose module
+
+import mongoose from 'mongoose'
+
 //configurarion module
-import { Secret } from '../config/config.js'
+import { MongoURI, Secret } from '../config/config.js'
 
 //import router
 
 import indexRouter from './routes/index.route.server.js'
 
 //instance app-server
-const app = express()
+const app = express(MongoURI)
+
+//DB configuration
+mongoose.connect(MongoURI)
+const db = mongoose.connection
+
+//Listen for connection success or error
+db.on('open', () => console.log('Connected to MongoDB'))
+db.on('error', () => console.log('Mongo Connection Error'))
 
 //set up viewENgine
 app.set('views', path.join(__dirname, '/views'))
