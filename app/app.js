@@ -11,7 +11,18 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+//Auth step 1
+
 //Import Mongoose module
+import passport from 'passport'
+import passportLocal from 'passport-local'
+import flash from 'connect-flash'
+
+//Auth step 2 -definr auth strategy
+let localStrategy = passportLocal.Strategy
+
+// Auth Step 3 - import the user model
+import User from './models/user.js'
 
 import mongoose from 'mongoose'
 
@@ -44,6 +55,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../public')))
+
+//Auth step 4
 app.use(
   session({
     secret: Secret,
@@ -51,6 +64,22 @@ app.use(
     resave: false,
   })
 )
+
+//Auth step 5
+
+app.use(flash())
+
+//auth step 6
+
+app.use(passport.initialize())
+app.use(passport.serializeUser())
+
+//auth 7
+passport.use(User.createStrategy)
+
+//auth 8
+passport.serializeUser(User.serializeUser()) // send info
+passport.deserializeUser(User.deserializeUser())
 
 //add routes
 
