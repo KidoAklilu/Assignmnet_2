@@ -32,8 +32,8 @@ import { MongoURI, Secret } from '../config/config.js'
 //import router
 
 import indexRouter from './routes/index.route.server.js'
-
 import contactRouter from './routes/contacts.route.server.js'
+import authRouter from './routes/auth.route.server.js'
 
 //instance app-server
 const app = express(MongoURI)
@@ -66,24 +66,24 @@ app.use(
 )
 
 //Auth step 5
-
 app.use(flash())
 
 //auth step 6
 
 app.use(passport.initialize())
-app.use(passport.serializeUser())
+app.use(passport.session())
 
-//auth 7
-passport.use(User.createStrategy)
+// Auth Step 7 - Implement the Auth Strategy
+passport.use(User.createStrategy())
 
-//auth 8
-passport.serializeUser(User.serializeUser()) // send info
+// Auth Step 8 - Setup serialization and deserialization
+passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 //add routes
 
 app.use('/', indexRouter)
 app.use('/', contactRouter)
+app.use('/', authRouter)
 
 export default app

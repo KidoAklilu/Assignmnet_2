@@ -13,13 +13,15 @@ li a {
   font-weight: normal;
   color: antiquewhite;
 }
+html,
+main,
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url(./images/brown.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  height: 100vh;
+  height: 120vh;
   width: 100%;
 }
 .footer {
@@ -90,7 +92,7 @@ textarea {
   color: #fff;
   font-size: 1.1rem;
   border: none;
-  outline: none;
+  outline: none;x
   cursor: pointer;
   transition: 0.1s;
 }
