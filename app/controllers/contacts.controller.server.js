@@ -1,3 +1,4 @@
+import { name } from 'ejs'
 import contactModel from '../models/contact.js'
 
 import { UserDisplayName } from '../utils/index.js'
@@ -38,7 +39,6 @@ export function ProcessContactsAddPage(req, res, next) {
       console.error(err)
       res.end(err)
     }
-
     res.redirect('/contact-list')
   })
 }
