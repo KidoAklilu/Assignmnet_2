@@ -5,6 +5,7 @@ import passport from 'passport'
 
 // need to include the User Model for authentication
 import User from '../models/user.js'
+import { UserDisplayName } from '../utils/index.js'
 
 //Display Functions
 export function DisplayLoginPage(req, res, next) {
@@ -14,6 +15,7 @@ export function DisplayLoginPage(req, res, next) {
       title: 'Login',
       page: 'login',
       messages: req.flash('loginerrorMessage'),
+      displayName: UserDisplayName(req),
     })
   }
 
@@ -26,6 +28,7 @@ export function DisplayRegisterPage(req, res, next) {
       title: 'Register',
       page: 'register',
       messages: req.flash('registerMessage'),
+      displayName: UserDisplayName(req),
     })
   }
 }

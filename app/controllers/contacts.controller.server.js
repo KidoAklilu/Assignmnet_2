@@ -1,5 +1,7 @@
 import contactModel from '../models/contact.js'
 
+import { UserDisplayName } from '../utils/index.js'
+
 export function DisplayContactList(req, res, next) {
   contactModel.find(function (err, contactsCollection) {
     if (err) {
@@ -11,6 +13,7 @@ export function DisplayContactList(req, res, next) {
       title: 'Contact List',
       page: 'Phonebook/list',
       contacts: contactsCollection,
+      displayName: UserDisplayName(req),
     })
   })
 }
@@ -19,6 +22,7 @@ export function DisplayContactsAddPage(req, res, next) {
     title: 'Add Contact',
     page: 'Phonebook/edit',
     contact: {},
+    displayName: UserDisplayName(req),
   })
 }
 
@@ -52,6 +56,7 @@ export function DisplayContactEditPage(req, res, next) {
       title: 'Edit Contact',
       page: 'Phonebook/edit',
       contact: contactsCollection,
+      displayName: UserDisplayName(req),
     })
   })
 }
