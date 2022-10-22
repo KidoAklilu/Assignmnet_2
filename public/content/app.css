@@ -390,3 +390,13 @@ article p {
   text-align: center;
   margin: 30px 2px;
 }
+/* logincss */
+#loginButton{
+  margin-bottom: 10px;
+}
+.cancelButton{
+  margin-bottom: 10px;
+}
+.link{
+  color:#fff;
+}
