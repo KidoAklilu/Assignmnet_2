@@ -4,19 +4,21 @@ import contactModel from '../models/contact.js'
 import { UserDisplayName } from '../utils/index.js'
 
 export function DisplayContactList(req, res, next) {
-  contactModel.find(function (err, contactsCollection) {
-    if (err) {
-      console.error(err)
-      res.end(err)
-    }
+  contactModel
+    .find(function (err, contactsCollection) {
+      if (err) {
+        console.error(err)
+        res.end(err)
+      }
 
-    res.render('index', {
-      title: 'Contact List',
-      page: 'Phonebook/list',
-      contacts: contactsCollection,
-      displayName: UserDisplayName(req),
+      res.render('index', {
+        title: 'Contact List',
+        page: 'Phonebook/list',
+        contacts: contactsCollection,
+        displayName: UserDisplayName(req),
+      })
     })
-  })
+    .sort({ name: 1 })
 }
 export function DisplayContactsAddPage(req, res, next) {
   res.render('index', {
