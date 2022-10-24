@@ -92,7 +92,7 @@ textarea {
   color: #fff;
   font-size: 1.1rem;
   border: none;
-  outline: none;x
+  outline: none;
   cursor: pointer;
   transition: 0.1s;
 }
@@ -391,12 +391,12 @@ article p {
   margin: 30px 2px;
 }
 /* logincss */
-#loginButton{
+#loginButton {
   margin-bottom: 10px;
 }
-.cancelButton{
+.cancelButton {
   margin-bottom: 10px;
 }
-.link{
-  color:#fff;
+.link {
+  color: #fff;
 }

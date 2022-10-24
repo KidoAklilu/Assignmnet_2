@@ -1,4 +1,5 @@
-import { name } from 'ejs'
+// Kidist AKlilu, 301220223, Oct/23/2022,
+
 import contactModel from '../models/contact.js'
 
 import { UserDisplayName } from '../utils/index.js'
